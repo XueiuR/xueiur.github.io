@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="薛瑞的博客">
 <meta property="og:description" content="Efficient and Privacy-Preserving Data Aggregation Scheme for Smart Grid Against Internal Adversaries   针对智能电网内部攻击的隐私保护数据聚合方案   [论文原文]Efficient and Privacy-Preserving Data Aggregation Scheme for Smart">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-18T13:37:53.099Z">
+<meta property="og:updated_time" content="2019-03-18T15:41:39.242Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="针对智能电网内部攻击的隐私保护数据聚合方案">
 <meta name="twitter:description" content="Efficient and Privacy-Preserving Data Aggregation Scheme for Smart Grid Against Internal Adversaries   针对智能电网内部攻击的隐私保护数据聚合方案   [论文原文]Efficient and Privacy-Preserving Data Aggregation Scheme for Smart">
@@ -374,7 +374,7 @@
 </ul>
 </li>
 </ol>
-<h3 id="Small-Exponent-Test-技术"><a href="#Small-Exponent-Test-技术" class="headerlink" title="$Small Exponent Test$技术"></a>$Small Exponent Test$技术</h3><p>&emsp;&emsp;小指数检测技术，用于优化批量验证过程。<br>&emsp;&emsp;$G$是乘法群，生成元为$g$，阶数为$q$，存在$n$对需要验证的实例$\left\{\left\{(x_1,y_1),(x_2,y_2),…,(x_n,y_n)\right\} \vert x_i \in Z_q,y_i \in G\right\}$，我们可以验证$g^{\sum_{i=1}^n {x_i \codt {s_i}}}=\prod_{i=1}^n y_i^{s_i}$是否成立，来判断所有需要验证的实例是否成立。其中，$E$是预先定义的小数集合， $s_i \in E$是随机选择的。<br>&emsp;&emsp;在$SET$中，$n$个随机化的指数$s_1,…,s_n$以及$n$个指数$x_1,…,x_n$作为输入的数据，可以聚合成单个指数，即 $\sum_{i=1}^n x_i \cdot s_i \bmod q$，用来降低计算开销。<br>&emsp;&emsp;使用$SET$技术保证消息的不可伪造性。</p>
+<h3 id="Small-Exponent-Test-技术"><a href="#Small-Exponent-Test-技术" class="headerlink" title="$Small Exponent Test$技术"></a>$Small Exponent Test$技术</h3><p>&emsp;&emsp;小指数检测技术，用于优化批量验证过程。<br>&emsp;&emsp;$G$是乘法群，生成元为$g$，阶数为$q$，存在$n$对需要验证的实例$\left\{\left\{(x_1,y_1),(x_2,y_2),…,(x_n,y_n)\right\} \vert x_i \in Z_q,y_i \in G\right\}$，我们可以验证$g^{\sum_{i=1}^n {x_i \cdot {s_i}}}=\prod_{i=1}^n y_i^{s_i}$是否成立，来判断所有需要验证的实例是否成立。其中，$E$是预先定义的小数集合， $s_i \in E$是随机选择的。<br>&emsp;&emsp;在$SET$中，$n$个随机化的指数$s_1,…,s_n$以及$n$个指数$x_1,…,x_n$作为输入的数据，可以聚合成单个指数，即 $\sum_{i=1}^n x_i \cdot s_i \bmod q$，用来降低计算开销。<br>&emsp;&emsp;使用$SET$技术保证消息的不可伪造性。</p>
 <h2 id="安全需求"><a href="#安全需求" class="headerlink" title="安全需求"></a>安全需求</h2><p>&emsp;&emsp;如我们在第一部分所述，本次提出的$P2DA$模式应该满足如下几个方面的要求:  </p>
 <ul>
 <li>隐私保护：实时电费可以让攻击者推测出用户生活习惯，所以无论是外部攻击还是内部攻击我们都应该阻止其对电费详情的查阅。  </li>
