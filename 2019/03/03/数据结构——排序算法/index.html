@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="数据结构算法 排序序列默认递增 插入排序直接插入排序代码//直接插入排序 void InsertSort(int A[], int n){     int i, j;     for(i = 2; i &amp;lt; n; i++){        //将A[2]-A[n]插入到前面已排序序列         if(A[i] &amp;lt; A[i-1]){          //若A[i]小于前驱，需将A[">
+<meta name="description" content="数据结构算法 排序序列默认递增 插入排序直接插入排序代码12345678910111213//直接插入排序void InsertSort(int A[], int n)&amp;#123;    int i, j;    for(i = 2; i &amp;lt; n; i++)&amp;#123;        //将A[2]-A[n]插入到前面已排序序列        if(A[i] &amp;lt; A[i-1])&amp;#12">
 <meta name="keywords" content="数据结构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构——排序算法">
 <meta property="og:url" content="http://yoursite.com/2019/03/03/数据结构——排序算法/index.html">
 <meta property="og:site_name" content="薛瑞的博客">
-<meta property="og:description" content="数据结构算法 排序序列默认递增 插入排序直接插入排序代码//直接插入排序 void InsertSort(int A[], int n){     int i, j;     for(i = 2; i &amp;lt; n; i++){        //将A[2]-A[n]插入到前面已排序序列         if(A[i] &amp;lt; A[i-1]){          //若A[i]小于前驱，需将A[">
+<meta property="og:description" content="数据结构算法 排序序列默认递增 插入排序直接插入排序代码12345678910111213//直接插入排序void InsertSort(int A[], int n)&amp;#123;    int i, j;    for(i = 2; i &amp;lt; n; i++)&amp;#123;        //将A[2]-A[n]插入到前面已排序序列        if(A[i] &amp;lt; A[i-1])&amp;#12">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-03T05:12:48.466Z">
+<meta property="og:updated_time" content="2019-03-19T13:06:13.325Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构——排序算法">
-<meta name="twitter:description" content="数据结构算法 排序序列默认递增 插入排序直接插入排序代码//直接插入排序 void InsertSort(int A[], int n){     int i, j;     for(i = 2; i &amp;lt; n; i++){        //将A[2]-A[n]插入到前面已排序序列         if(A[i] &amp;lt; A[i-1]){          //若A[i]小于前驱，需将A[">
+<meta name="twitter:description" content="数据结构算法 排序序列默认递增 插入排序直接插入排序代码12345678910111213//直接插入排序void InsertSort(int A[], int n)&amp;#123;    int i, j;    for(i = 2; i &amp;lt; n; i++)&amp;#123;        //将A[2]-A[n]插入到前面已排序序列        if(A[i] &amp;lt; A[i-1])&amp;#12">
 
 
 
@@ -312,178 +312,14 @@
       
         <p><strong>数据结构算法</strong></p>
 <p>排序序列默认递增</p>
-<h1 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h1><h2 id="直接插入排序代码"><a href="#直接插入排序代码" class="headerlink" title="直接插入排序代码"></a>直接插入排序代码</h2><pre><code>//直接插入排序
-void InsertSort(int A[], int n){
-    int i, j;
-    for(i = 2; i &lt; n; i++){        //将A[2]-A[n]插入到前面已排序序列
-        if(A[i] &lt; A[i-1]){          //若A[i]小于前驱，需将A[i]插入有序表
-            A[0] = A[i];             //复制为哨兵，A[0]不存放元素
-            for(j = i-1; A[0] &lt; A[j]; j--){   //从后往前查找待插入位置
-                A[j+1] = A[j];     //向后挪位
-            }
-            A[j+1] = A[0];          //复制到插入位置
-        }
-    }
-}
-</code></pre><h2 id="折半插入排序代码"><a href="#折半插入排序代码" class="headerlink" title="折半插入排序代码"></a>折半插入排序代码</h2><pre><code>//折半插入排序
-void InsertSort(int A[], int n){
-    int i,j,low,high,mid;
-    for(i = 2;i &lt;= n; i++){         //将A[2]-A[n]插入到前面已排序序列
-        A[0] = A[i];                //将A[i]暂存到A[0]
-        low = 1;                    //设置折半查找的范围
-        high = i-1;
-        while(low &lt;= high){          //折半查找，默认递增有序
-            mid = (low+high)/2;      //取中间点
-            if(A[mid] &gt; A[0]){      
-                high = mid-1;        //查找左半子表
-            }else{
-                low = mid+1;         //查找右半子表
-            }
-        }
-        for(j = i-1;j &gt;=high+1; j--){
-            A[j+1] = A[j];           //统一插入后
-        }
-        A[high+1] = A[0];            //插入操作
-    }
-}
-</code></pre><h1 id="交换排序"><a href="#交换排序" class="headerlink" title="交换排序"></a>交换排序</h1><h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><pre><code>//冒泡排序
-void BubbleSort(int A[], int n){
-    int i,j;
-    bool flag;
-    for(i = 0; i &lt; n-1; i++){
-        flag = false;
-        for(j = n-1; j &gt; i; j--){
-            if(A[j-1] &gt; A[j]){         //若为逆序
-                  swap(A[j-1], A[j]);     //交换
-                  flag = true;
-                }
-            }
-            if(flag == false)
-            {
-            return ;                   //本趟遍历后没有发生交换，说明表已经有序
-        }
-    }
-}
-</code></pre><h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><pre><code>//快速排序
-//Partition()就是划分操作，将表A[low,...,high]划分为满足条件的两个子表
-int Partition(int A[], int low, int high){
-    int pivot = A[low];    //将当前表中第一个元素设为枢轴值，对表进行划分
-    while(low &lt; high){
-        while(low &lt; high &amp;&amp; A[high] &gt;= pivot){
-            high--;
-        }
-        A[low] = A[high];    //将比枢轴值小的元素移动到左端
-        while(low &lt; high &amp;&amp; A[low] &lt;= pivot){
-            low++;
-        }
-        A[high] = A[low];    //将比枢轴值大的元素移动到右端
-    }
-    A[low] = pivot;          //枢轴元素存放到最终位置
-    return low;              //返回存放枢轴的最终位置
-}
-
-void QuickSort(int A[], int low, int high){
-    if(low &lt; high){
-        int pivotpos = Partition(A, low, high); //划分
-        QuickSort(A, low, pivotpos-1);    //依次对两个子表进行递归排序
-        QuickSort(A, pivotpos+1, high);
-    }
-}
-</code></pre><h1 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h1><h2 id="简单选择排序"><a href="#简单选择排序" class="headerlink" title="简单选择排序"></a>简单选择排序</h2><pre><code>//简单选择排序
-void SelectSort(int A[], int n){
-    //从A[0]开始存放元素
-    int i,min;
-    for(i = 0; i &lt; n-1; i++){
-        min = i;
-        for(j = i+1; j &lt; n; j++){
-            if(A[j] &lt; A[min]){
-                min = j;               //更新最小元素位置
-            }
-        }
-        if(min != i){
-            swap(A[i], A[min]);         //与第i个位置交换
-        }
-    }
-}
-</code></pre><h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><p>堆排序，最大堆用于递增排序，最小堆用于递减排序</p>
-<pre><code>//将元素k向下调整
-void AdjustDown(int A[], int k, int len){
-    int i;
-    A[0] = A[k];   //A[0]暂存元素k
-    for(i = 2*k; i &lt;= len; i *= 2){ //向下筛选子节点
-        if(i&lt;len &amp;&amp; A[i]&lt;A[i+1]){   //比较兄弟节点，选出值大的节点与父节点比较
-            i++;
-        }
-        if(A[0]&gt;= A[i]){    //父节点比子节点中最大的还大，所以筛选结束
-            break;
-        }else{
-               A[k] = A[i];     //将A[i]调整到父节点处，不用管父节点原来的值，因为在A[0]暂存
-            k = i;           //修改k的值，继续向下筛选
-        }
-    }
-    A[k] = A[0];           //被筛选的节点放入最终位置
-}
-
-//建立大根堆
-void BuildMaxHeap(int A[], int len){
-    for(int i = len/2; i &gt; 0; i--){  //从i = [n/2]~1,反复调整堆
-        AdjustDown(A,i,len);
-    }
-}
-
-//堆排序
-void HeapSort(int A[], int len){
-    BuildMaxHeap(A,len);
-    int i;
-    for(i = len; i &gt; 1; i--){
-        swap(A[i],A[1]);      //将堆顶元素和堆底元素交换
-        AdjustDown(A,1,i-1); 
-    }
-}
-
-int main(){
-    int a[8] = {0,7,9,2,4,6,8,10};
-    HeapSort(a, 7);
-
-    for(int i =1;i&lt;8;i++){
-        cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;
-    }
-    return 0;
-}
-</code></pre><h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><pre><code>//归并排序
-int *B=(int *)malloc((n+1)*sizeof(int)); //辅助数组B
-void Merge(int A[], int low, int mid, int high){
-    //表A的两段A[low,...,mid]和A[mid+1,...,high]各自有序，将它们合并成一个有序表
-    for(int k=low; k&lt;=high; k++){
-        B[k] = A[k];             //将A中所有元素复制到B中
-    }
-    for(int i= low,int j =mid+1, int k=i; i&lt;=mid&amp;&amp;j&lt;=high;k++){
-        if(B[i] &lt;= B[j]){        //比较B的左右两段中的元素，将较小值复制到A中
-            A[k] = B[i];        
-            i++;
-        }else{
-            A[k] = B[j];
-            j++;
-        }
-    }//for
-    //以下两个while()循环只有一个会执行
-    while(i &lt;= mid){
-        A[k++] = B[i++];  //若第一个表未检测完，复制
-    }
-    while(j &lt;= high){
-        A[k++] = B[j++];   //若第二个表未检测完，复制
-    }
-}
-
-void MergeSort(int A[], int low, int high){
-    if(low&lt;high){
-        int mid = (low+high)/2;
-        MergeSort(A,low,mid);
-        MergeSort(A,mid+1,high);
-        Merge(A,low,mid,high);
-    }
-}
-</code></pre>
+<h1 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h1><h2 id="直接插入排序代码"><a href="#直接插入排序代码" class="headerlink" title="直接插入排序代码"></a>直接插入排序代码</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//直接插入排序</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InsertSort</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, j;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">2</span>; i &lt; n; i++)&#123;        <span class="comment">//将A[2]-A[n]插入到前面已排序序列</span></span><br><span class="line">        <span class="keyword">if</span>(A[i] &lt; A[i<span class="number">-1</span>])&#123;          <span class="comment">//若A[i]小于前驱，需将A[i]插入有序表</span></span><br><span class="line">            A[<span class="number">0</span>] = A[i];             <span class="comment">//复制为哨兵，A[0]不存放元素</span></span><br><span class="line">            <span class="keyword">for</span>(j = i<span class="number">-1</span>; A[<span class="number">0</span>] &lt; A[j]; j--)&#123;   <span class="comment">//从后往前查找待插入位置</span></span><br><span class="line">                A[j+<span class="number">1</span>] = A[j];     <span class="comment">//向后挪位</span></span><br><span class="line">            &#125;</span><br><span class="line">           	A[j+<span class="number">1</span>] = A[<span class="number">0</span>];          <span class="comment">//复制到插入位置</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="折半插入排序代码"><a href="#折半插入排序代码" class="headerlink" title="折半插入排序代码"></a>折半插入排序代码</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//折半插入排序</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InsertSort</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,j,low,high,mid;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">2</span>;i &lt;= n; i++)&#123;         <span class="comment">//将A[2]-A[n]插入到前面已排序序列</span></span><br><span class="line">        A[<span class="number">0</span>] = A[i];                <span class="comment">//将A[i]暂存到A[0]</span></span><br><span class="line">        low = <span class="number">1</span>;                    <span class="comment">//设置折半查找的范围</span></span><br><span class="line">        high = i<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(low &lt;= high)&#123;          <span class="comment">//折半查找，默认递增有序</span></span><br><span class="line">            mid = (low+high)/<span class="number">2</span>;      <span class="comment">//取中间点</span></span><br><span class="line">            <span class="keyword">if</span>(A[mid] &gt; A[<span class="number">0</span>])&#123;      </span><br><span class="line">                high = mid<span class="number">-1</span>;        <span class="comment">//查找左半子表</span></span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                low = mid+<span class="number">1</span>;         <span class="comment">//查找右半子表</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(j = i<span class="number">-1</span>;j &gt;=high+<span class="number">1</span>; j--)&#123;</span><br><span class="line">            A[j+<span class="number">1</span>] = A[j];           <span class="comment">//统一插入后</span></span><br><span class="line">        &#125;</span><br><span class="line">        A[high+<span class="number">1</span>] = A[<span class="number">0</span>];            <span class="comment">//插入操作</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="交换排序"><a href="#交换排序" class="headerlink" title="交换排序"></a>交换排序</h1><h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//冒泡排序</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BubbleSort</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,j;</span><br><span class="line">    <span class="keyword">bool</span> flag;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n<span class="number">-1</span>; i++)&#123;</span><br><span class="line">        flag = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(j = n<span class="number">-1</span>; j &gt; i; j--)&#123;</span><br><span class="line">        	<span class="keyword">if</span>(A[j<span class="number">-1</span>] &gt; A[j])&#123;         <span class="comment">//若为逆序</span></span><br><span class="line">             	swap(A[j<span class="number">-1</span>], A[j]);     <span class="comment">//交换</span></span><br><span class="line">              	flag = <span class="literal">true</span>;</span><br><span class="line">           	&#125;</span><br><span class="line">       	&#125;</span><br><span class="line">       	<span class="keyword">if</span>(flag == <span class="literal">false</span>)</span><br><span class="line">       	&#123;</span><br><span class="line">            <span class="keyword">return</span> ;                   <span class="comment">//本趟遍历后没有发生交换，说明表已经有序</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//快速排序</span></span><br><span class="line"><span class="comment">//Partition()就是划分操作，将表A[low,...,high]划分为满足条件的两个子表</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Partition</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> pivot = A[low];    <span class="comment">//将当前表中第一个元素设为枢轴值，对表进行划分</span></span><br><span class="line">    <span class="keyword">while</span>(low &lt; high)&#123;</span><br><span class="line">        <span class="keyword">while</span>(low &lt; high &amp;&amp; A[high] &gt;= pivot)&#123;</span><br><span class="line">            high--;</span><br><span class="line">        &#125;</span><br><span class="line">        A[low] = A[high];    <span class="comment">//将比枢轴值小的元素移动到左端</span></span><br><span class="line">        <span class="keyword">while</span>(low &lt; high &amp;&amp; A[low] &lt;= pivot)&#123;</span><br><span class="line">            low++;</span><br><span class="line">        &#125;</span><br><span class="line">        A[high] = A[low];    <span class="comment">//将比枢轴值大的元素移动到右端</span></span><br><span class="line">    &#125;</span><br><span class="line">    A[low] = pivot;          <span class="comment">//枢轴元素存放到最终位置</span></span><br><span class="line">    <span class="keyword">return</span> low;              <span class="comment">//返回存放枢轴的最终位置</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QuickSort</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(low &lt; high)&#123;</span><br><span class="line">        <span class="keyword">int</span> pivotpos = Partition(A, low, high); <span class="comment">//划分</span></span><br><span class="line">        QuickSort(A, low, pivotpos<span class="number">-1</span>);    <span class="comment">//依次对两个子表进行递归排序</span></span><br><span class="line">        QuickSort(A, pivotpos+<span class="number">1</span>, high);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h1><h2 id="简单选择排序"><a href="#简单选择排序" class="headerlink" title="简单选择排序"></a>简单选择排序</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//简单选择排序</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SelectSort</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="comment">//从A[0]开始存放元素</span></span><br><span class="line">    <span class="keyword">int</span> i,min;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n<span class="number">-1</span>; i++)&#123;</span><br><span class="line">        min = i;</span><br><span class="line">        <span class="keyword">for</span>(j = i+<span class="number">1</span>; j &lt; n; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(A[j] &lt; A[min])&#123;</span><br><span class="line">                min = j;               <span class="comment">//更新最小元素位置</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(min != i)&#123;</span><br><span class="line">            swap(A[i], A[min]);         <span class="comment">//与第i个位置交换</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><p>堆排序，最大堆用于递增排序，最小堆用于递减排序</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将元素k向下调整</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">AdjustDown</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> k, <span class="keyword">int</span> len)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    A[<span class="number">0</span>] = A[k];   <span class="comment">//A[0]暂存元素k</span></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">2</span>*k; i &lt;= len; i *= <span class="number">2</span>)&#123; <span class="comment">//向下筛选子节点</span></span><br><span class="line">        <span class="keyword">if</span>(i&lt;len &amp;&amp; A[i]&lt;A[i+<span class="number">1</span>])&#123;   <span class="comment">//比较兄弟节点，选出值大的节点与父节点比较</span></span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(A[<span class="number">0</span>]&gt;= A[i])&#123;    <span class="comment">//父节点比子节点中最大的还大，所以筛选结束</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">           	A[k] = A[i];     <span class="comment">//将A[i]调整到父节点处，不用管父节点原来的值，因为在A[0]暂存</span></span><br><span class="line">            k = i;           <span class="comment">//修改k的值，继续向下筛选</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    A[k] = A[<span class="number">0</span>];           <span class="comment">//被筛选的节点放入最终位置</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//建立大根堆</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BuildMaxHeap</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> len)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = len/<span class="number">2</span>; i &gt; <span class="number">0</span>; i--)&#123;  <span class="comment">//从i = [n/2]~1,反复调整堆</span></span><br><span class="line">        AdjustDown(A,i,len);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//堆排序</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">HeapSort</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> len)</span></span>&#123;</span><br><span class="line">    BuildMaxHeap(A,len);</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i = len; i &gt; <span class="number">1</span>; i--)&#123;</span><br><span class="line">        swap(A[i],A[<span class="number">1</span>]);      <span class="comment">//将堆顶元素和堆底元素交换</span></span><br><span class="line">        AdjustDown(A,<span class="number">1</span>,i<span class="number">-1</span>); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[<span class="number">8</span>] = &#123;<span class="number">0</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">10</span>&#125;;</span><br><span class="line">    HeapSort(a, <span class="number">7</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">1</span>;i&lt;<span class="number">8</span>;i++)&#123;</span><br><span class="line">    	   <span class="built_in">cout</span>&lt;&lt;a[i]&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//归并排序</span></span><br><span class="line"><span class="keyword">int</span> *B=(<span class="keyword">int</span> *)<span class="built_in">malloc</span>((n+<span class="number">1</span>)*<span class="keyword">sizeof</span>(<span class="keyword">int</span>)); <span class="comment">//辅助数组B</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Merge</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> low, <span class="keyword">int</span> mid, <span class="keyword">int</span> high)</span></span>&#123;</span><br><span class="line">    <span class="comment">//表A的两段A[low,...,mid]和A[mid+1,...,high]各自有序，将它们合并成一个有序表</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k=low; k&lt;=high; k++)&#123;</span><br><span class="line">        B[k] = A[k];             <span class="comment">//将A中所有元素复制到B中</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i= low,<span class="keyword">int</span> j =mid+<span class="number">1</span>, <span class="keyword">int</span> k=i; i&lt;=mid&amp;&amp;j&lt;=high;k++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(B[i] &lt;= B[j])&#123;        <span class="comment">//比较B的左右两段中的元素，将较小值复制到A中</span></span><br><span class="line">            A[k] = B[i];        </span><br><span class="line">            i++;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            A[k] = B[j];</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="comment">//for</span></span><br><span class="line">    <span class="comment">//以下两个while()循环只有一个会执行</span></span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid)&#123;</span><br><span class="line">        A[k++] = B[i++];  <span class="comment">//若第一个表未检测完，复制</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(j &lt;= high)&#123;</span><br><span class="line">        A[k++] = B[j++];   <span class="comment">//若第二个表未检测完，复制</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MergeSort</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(low&lt;high)&#123;</span><br><span class="line">        <span class="keyword">int</span> mid = (low+high)/<span class="number">2</span>;</span><br><span class="line">        MergeSort(A,low,mid);</span><br><span class="line">        MergeSort(A,mid+<span class="number">1</span>,high);</span><br><span class="line">        Merge(A,low,mid,high);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -604,7 +440,7 @@ void MergeSort(int A[], int low, int high){
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -617,7 +453,7 @@ void MergeSort(int A[], int low, int high){
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
